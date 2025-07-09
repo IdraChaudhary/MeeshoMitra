@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meesho Mitra - Revolutionary FAQ</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #580A46 0%, #7C2D5A 50%, #A0456E 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .faq-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 30px;
+            align-items: start;
+        }
+
+        .traditional-faq {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(88, 10, 70, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .faq-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .faq-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #580A46;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #580A46, #7C2D5A);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .faq-subtitle {
+            color: #64748B;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .revolution-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #580A46, #7C2D5A);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .faq-item {
+            border: 1px solid #E2E8F0;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            border-color: #580A46;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(88, 10, 70, 0.1);
+        }
+
+        .faq-question {
+            padding: 20px;
+            background: white;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: #1E293B;
+            transition: background 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background: #F8FAFC;
+        }
+
+        .faq-question.active {
+            background: linear-gradient(135deg, #580A46, #7C2D5A);
+            color: white;
+        }
+
+        .faq-arrow {
+            font-size: 18px;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-arrow.active {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            background: #F8FAFC;
+        }
+
+        .faq-answer.active {
+            max-height: 200px;
+        }
+
+        .faq-answer-content {
+            padding: 20px;
+            color: #64748B;
+            line-height: 1.6;
+        }
+
+        .mitra-widget {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(88, 10, 70, 0.15);
+            overflow: hidden;
+            position: sticky;
+            top: 20px;
+            border: 2px solid #580A46;
+        }
+
+        .mitra-header {
+            background: linear-gradient(135deg, #580A46, #7C2D5A);
+            color: white;
+            padding: 25px;
+            text-align: center;
+            position: relative;
+        }
+
+        .mitra-avatar {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            font-size: 30px;
+            animation: float 3s ease-in-out infinite;
+            backdrop-filter: blur(10px);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .mitra-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .mitra-subtitle {
+            font-size: 15px;
+            opacity: 0.9;
+            margin-bottom: 15px;
+        }
+
+        .ai-badge {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            backdrop-filter: blur(10px);
+        }
+
+        .mitra-body {
+            padding: 25px;
+            max-height: 450px;
+            overflow-y: auto;
+            background: #FAFAFA;
+        }
+
+        .mitra-intro {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .intro-text {
+            color: #64748B;
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 15px;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid #E2E8F0;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(88, 10, 70, 0.1);
+            border-color: #580A46;
+        }
+
+        .feature-icon {
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+
+        .feature-title {
+            font-size: 12px;
+            font-weight: 600;
+            color: #1E293B;
+            margin-bottom: 5px;
+        }
+
+        .feature-desc {
+            font-size: 11px;
+            color: #64748B;
+        }
+
+        .quick-questions {
+            margin-bottom: 25px;
+        }
+
+        .quick-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #1E293B;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .quick-btn {
+            display: block;
+            width: 100%;
+            background: linear-gradient(135deg, #580A46, #7C2D5A);
+            color: white;
+            border: none;
+            padding: 12px 15px;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            margin-bottom: 10px;
+            transition: all 0.3s ease;
+            text-align: left;
+        }
+
+        .quick-btn:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(88, 10, 70, 0.3);
+        }
+
+        .input-section {
+            background: white;
+            padding: 20px;
+            border-top: 1px solid #E2E8F0;
+        }
+
+        .input-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .chat-input {
+            flex: 1;
+            padding: 12px 15px;
+            border: 2px solid #E2E8F0;
+            border-radius: 25px;
+            outline: none;
+            font-size: 14px;
+            transition: border-color 0.3s ease;
+        }
+
+        .chat-input:focus {
+            border-color: #580A46;
+        }
+
+        .input-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .action-btn {
+            width: 40px;
+            height: 40px;
+            border: none;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #580A46, #7C2D5A);
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            font-size: 16px;
+        }
+
+        .action-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(88, 10, 70, 0.4);
+        }
+
+        .whatsapp-btn {
+            width: 100%;
+            background: #25D366;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-btn:hover {
+            background: #128C7E;
+            transform: translateY(-2px);
+        }
+
+        .comparison-highlight {
+            background: linear-gradient(135deg, rgba(88, 10, 70, 0.1), rgba(124, 45, 90, 0.1));
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(88, 10, 70, 0.2);
+        }
+
+        .vs-text {
+            text-align: center;
+            font-size: 18px;
+            font-weight: 700;
+            color: #580A46;
+            margin-bottom: 15px;
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .comparison-item {
+            text-align: center;
+        }
+
+        .comparison-label {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .old-way {
+            color: #DC2626;
+        }
+
+        .new-way {
+            color: #059669;
+        }
+
+        .comparison-desc {
+            font-size: 12px;
+            color: #64748B;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 768px) {
+            .faq-container {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .mitra-widget {
+                position: relative;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="faq-container">
+        <div class="traditional-faq">
+            <div class="faq-header">
+                <div class="revolution-badge">✨ FAQ Revolution in Progress</div>
+                <h1 class="faq-title">Frequently Asked Questions</h1>
+                <p class="faq-subtitle">Traditional FAQ meets AI-powered assistance</p>
+                
+                <div class="comparison-highlight">
+                    <div class="vs-text">Old FAQ vs New Experience</div>
+                    <div class="comparison-grid">
+                        <div class="comparison-item">
+                            <div class="comparison-label old-way">❌ Traditional Way</div>
+                            <div class="comparison-desc">Scroll through long lists<br>Hope your question is there<br>Generic answers only</div>
+                        </div>
+                        <div class="comparison-item">
+                            <div class="comparison-label new-way">✅ Mitra Way</div>
+                            <div class="comparison-desc">Ask naturally in Hinglish<br>Instant personalized responses<br>Voice, text, photo support</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>🚚 Delivery aur shipping ke baare mein bataiye?</span>
+                    <span class="faq-arrow">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        Standard delivery 3-5 business days mein hoti hai. Free shipping on orders above ₹499. Same-day delivery select cities mein available hai.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>↩️ Return policy kya hai? Kaise karna hai?</span>
+                    <span class="faq-arrow">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        7-day return policy hai. Original packaging mein item hona chahiye. Return request app se kar sakte hain, pickup free hai.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>📏 Size chart kaha milega? Sizing accurate hai?</span>
+                    <span class="faq-arrow">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        Har product page pe size chart available hai. Measurements accurate hain. Agar fit nahi hai toh easy return kar sakte hain.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>💳 Payment options kya hain? Safe hai?</span>
+                    <span class="faq-arrow">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        Credit/Debit cards, UPI, Net Banking, Wallets, COD available. 100% secure payment gateway use karte hain.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>🎁 Offers aur discounts kaise milte hain?</span>
+                    <span class="faq-arrow">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        App notifications on rakhen, newsletter subscribe karen. Festival sales, flash sales regularly hote hain. Meesho Mall mein extra discounts.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>📞 Customer support kaise contact karu?</span>
+                    <span class="faq-arrow">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        24/7 support available hai. App mein help section, email, phone support, ya right side mein Mitra se instantly chat kar sakte hain!
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mitra-widget">
+            <div class="mitra-header">
+                <div class="mitra-avatar">🤖</div>
+                <div class="mitra-title">Meesho Mitra</div>
+                <div class="mitra-subtitle">आपका AI-powered FAQ assistant</div>
+                <div class="ai-badge">🚀 REVOLUTIONIZING FAQ</div>
+            </div>
+
+            <div class="mitra-body">
+                <div class="mitra-intro">
+                    <div class="intro-text">
+                        <strong>Traditional FAQ bore kar raha hai? 😴</strong><br>
+                        Mitra se naturally poochiye - Hindi, English, Hinglish mein!
+                    </div>
+                </div>
+
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🗣️</div>
+                        <div class="feature-title">Voice Chat</div>
+                        <div class="feature-desc">Bol ke poocho</div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📸</div>
+                        <div class="feature-title">Photo Upload</div>
+                        <div class="feature-desc">Tasveer bhejiye</div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🔍</div>
+                        <div class="feature-title">Smart Search</div>
+                        <div class="feature-desc">Turant jawab</div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🛍️</div>
+                        <div class="feature-title">Product Help</div>
+                        <div class="feature-desc">Shopping guide</div>
+                    </div>
+                </div>
+
+                <div class="quick-questions">
+                    <div class="quick-title">🔥 Popular Questions</div>
+                    <button class="quick-btn" onclick="askMitra('Delivery kitne din mein hogi?')">
+                        🚚 Delivery kitne din mein hogi?
+                    </button>
+                    <button class="quick-btn" onclick="askMitra('Size kaise choose karu?')">
+                        📏 Size kaise choose karu?
+                    </button>
+                    <button class="quick-btn" onclick="askMitra('Return kaise karna hai?')">
+                        ↩️ Return kaise karna hai?
+                    </button>
+                    <button class="quick-btn" onclick="askMitra('Payment secure hai?')">
+                        💳 Payment secure hai?
+                    </button>
+                </div>
+            </div>
+
+            <div class="input-section">
+                <div class="input-group">
+                    <input type="text" class="chat-input" placeholder="Kuch bhi pooch sakte hain... 🤔" id="mitraInput" onkeypress="handleKeyPress(event)">
+                    <div class="input-actions">
+                        <button class="action-btn" onclick="handleVoice()" title="Voice Input">🎤</button>
+                        <button class="action-btn" onclick="handlePhoto()" title="Photo Upload">📸</button>
+                        <button class="action-btn" onclick="sendToMitra()" title="Send">➤</button>
+                    </div>
+                </div>
+                <button class="whatsapp-btn" onclick="connectWhatsApp()">
+                    💬 WhatsApp pe continue karte hain
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleFAQ(element) {
+            const answer = element.nextElementSibling;
+            const arrow = element.querySelector('.faq-arrow');
+            
+            // Close all other FAQ items
+            document.querySelectorAll('.faq-question').forEach(q => {
+                if (q !== element) {
+                    q.classList.remove('active');
+                    q.nextElementSibling.classList.remove('active');
+                    q.querySelector('.faq-arrow').classList.remove('active');
+                }
+            });
+            
+            // Toggle current item
+            element.classList.toggle('active');
+            answer.classList.toggle('active');
+            arrow.classList.toggle('active');
+        }
+
+        function handleKeyPress(event) {
+            if (event.key === 'Enter') {
+                sendToMitra();
+            }
+        }
+
+        function sendToMitra() {
+            const input = document.getElementById('mitraInput');
+            const message = input.value.trim();
+            
+            if (message) {
+                showMitraResponse(message);
+                input.value = '';
+            }
+        }
+
+        function askMitra(question) {
+            document.getElementById('mitraInput').value = question;
+            showMitraResponse(question);
+        }
+
+        function showMitraResponse(question) {
+            // Create a temporary response overlay
+            const overlay = document.createElement('div');
+            overlay.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(88, 10, 70, 0.95);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 1000;
+                color: white;
+                font-size: 24px;
+                font-weight: 600;
+                text-align: center;
+                animation: fadeIn 0.3s ease;
+            `;
+            
+            overlay.innerHTML = `
+                <div>
+                    <div style="font-size: 60px; margin-bottom: 20px;">🤖</div>
+                    <div>Mitra is thinking...</div>
+                    <div style="font-size: 16px; margin-top: 10px; opacity: 0.8;">
+                        "${question}"
+                    </div>
+                    <div style="font-size: 14px; margin-top: 20px; opacity: 0.7;">
+                        Processing in Hinglish... 🚀
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(overlay);
+            
+            setTimeout(() => {
+                overlay.remove();
+                alert(`Mitra Response: "${question}" का जवाब instant मिल गया! 🎉\n\nTraditional FAQ से 10x faster! 🚀`);
+            }, 2000);
+        }
+
+        function handleVoice() {
+            alert('🎤 Voice recording शुरू हो गया!\n\nBol ke poocho - Hindi, English, Hinglish sab samjha jata hai! 🗣️');
+        }
+
+        function handlePhoto() {
+            alert('📸 Photo upload हो गया!\n\nProduct की तस्वीर देख के specific help दे सकते हैं! 📷✨');
+        }
+
+        function connectWhatsApp() {
+            alert('💬 WhatsApp पर connect हो रहे हैं!\n\nPersonal assistant बन जाएगा Mitra! 🤖📱');
+        }
+
+        // Auto-demo effect
+        setTimeout(() => {
+            document.querySelector('.revolution-badge').style.animation = 'pulse 1s infinite';
+        }, 3000);
+    </script>
+</body>
+</html>
